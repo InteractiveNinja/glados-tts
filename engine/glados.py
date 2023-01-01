@@ -1,4 +1,5 @@
 import os
+import re
 import time
 from subprocess import call
 
@@ -41,7 +42,8 @@ class GladosEngine:
         if not os.path.exists(audio_folder_path):
             os.mkdir(audio_folder_path)
 
-        audio_filename = os.path.join(audio_folder_path,"GLaDOS-tts-" + text.replace(" ", "-").lower() + ".wav" if self.cache else "GLaDOS-tts-output.wav")
+        audio_filename = "GLaDOS-tts-" + text.replace(" ", "-").lower() if self.cache else "GLaDOS-tts-output"
+        audio_filename = re.sub(r"[$&+,:;=?@#|'<>.^*()%!]", "", audio_filename) + ".wav"
 
         audio_file_path = os.path.join(audio_folder_path, audio_filename)
 
