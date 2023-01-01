@@ -3,3 +3,4 @@ phonemizer
 inflect
 unidecode
 scipy
+flask
