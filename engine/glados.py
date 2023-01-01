@@ -48,7 +48,7 @@ class GladosEngine:
         audio_file_path = os.path.join(audio_folder_path, audio_filename)
 
         if self.cache:
-            if not os.path.isfile(audio_filename):
+            if not os.path.exists(audio_file_path):
                 self._generate_file(text, audio_file_path)
         else:
             self._generate_file(text, audio_file_path)
